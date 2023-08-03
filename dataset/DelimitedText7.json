@@ -1,0 +1,37 @@
+{
+	"name": "DelimitedText7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage11",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "prod.csv",
+				"container": "prod"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PO",
+				"type": "String"
+			},
+			{
+				"name": "itemname",
+				"type": "String"
+			},
+			{
+				"name": "quatity",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

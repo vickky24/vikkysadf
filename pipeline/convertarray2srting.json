@@ -1,0 +1,113 @@
+{
+	"name": "convertarray2srting",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookupemails",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "empwafaxfer",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1email",
+				"description": "",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookupemails",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookupemails').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Setemails",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set tmpvariables",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "Emails",
+								"value": {
+									"value": "@variables('tmpEmails')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set tmpvariables",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "tmpEmails",
+								"value": {
+									"value": "@concat(item().Email,';',variables('Emails'))",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"Emails": {
+				"type": "String"
+			},
+			"tmpEmails": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-07-20T06:52:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

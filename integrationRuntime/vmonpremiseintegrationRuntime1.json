@@ -1,0 +1,6 @@
+{
+	"name": "vmonpremiseintegrationRuntime1",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

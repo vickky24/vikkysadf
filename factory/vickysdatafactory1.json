@@ -1,0 +1,9 @@
+{
+	"name": "vickysdatafactory1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e802c89f-5a6e-4f7f-a6e7-dd9e1ffc41b5",
+		"tenantId": "8e0aa9b1-6c14-4029-a598-640df22dcb27"
+	}
+}

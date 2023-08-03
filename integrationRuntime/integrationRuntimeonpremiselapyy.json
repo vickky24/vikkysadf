@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimeonpremiselapyy",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

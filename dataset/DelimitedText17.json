@@ -1,0 +1,24 @@
+{
+	"name": "DelimitedText17",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Blob18july",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "emptxt22july (1).txt",
+				"container": "24july"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,12 @@
+{
+	"name": "SqlServeronprem2adls",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer24",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

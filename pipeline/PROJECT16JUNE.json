@@ -16,21 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ABS_Source_multifiles",
+						"referenceName": "SqlServeronprem2adls",
 						"type": "DatasetReference"
 					}
 				]

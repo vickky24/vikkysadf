@@ -1,0 +1,55 @@
+{
+	"name": "DS_ABS_Source_multifiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ABS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourcecontainer": {
+				"type": "string"
+			},
+			"sourcefilename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().sourcefilename",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().sourcecontainer",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "month ",
+				"type": "String"
+			},
+			{
+				"name": "sales",
+				"type": "String"
+			},
+			{
+				"name": "profit",
+				"type": "String"
+			},
+			{
+				"name": "location",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

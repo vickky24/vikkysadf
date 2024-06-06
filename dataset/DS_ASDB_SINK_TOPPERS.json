@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASDB_SINK_TOPPERS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TOPPERS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

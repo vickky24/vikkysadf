@@ -1,0 +1,76 @@
+{
+	"name": "DF_SCD1_4JUNE",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_ADLS4JUNE",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_ADB4JUNESCD1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "GENERATEHASHVALUEmd5"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Cust_ID as short,",
+				"          Cust_Name as string,",
+				"          { manager} as string,",
+				"          city as string,",
+				"          Start_date as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(cust_surr_key = md5(concat(toString(Cust_ID),Cust_Name,{ manager},city,toString(Start_date)))) ~> GENERATEHASHVALUEmd5",
+				"GENERATEHASHVALUEmd5 alterRow(upsertIf(true())) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          cust_surr_key as string,",
+				"          cust_id as integer,",
+				"          cust_name as string,",
+				"          manager as string,",
+				"          city as string,",
+				"          start_date as timestamp,",
+				"          update_date as timestamp",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:false,",
+				"     upsertable:true,",
+				"     keys:['cust_id'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          cust_surr_key,",
+				"          cust_id = Cust_ID,",
+				"          cust_name = Cust_Name,",
+				"          manager = { manager},",
+				"          city,",
+				"          start_date = Start_date",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

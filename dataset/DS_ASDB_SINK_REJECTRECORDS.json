@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASDB_SINK_REJECTRECORDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "REJECTRECORDS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

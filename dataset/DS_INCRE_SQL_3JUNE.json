@@ -1,0 +1,33 @@
+{
+	"name": "DS_INCRE_SQL_3JUNE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "order_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inserttime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "orders_final"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

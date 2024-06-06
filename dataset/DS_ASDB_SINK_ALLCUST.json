@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASDB_SINK_ALLCUST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "creditresult"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

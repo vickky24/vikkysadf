@@ -1,0 +1,51 @@
+{
+	"name": "DS_ADB4JUNESCD1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB4JUNE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cust_surr_key",
+				"type": "varchar"
+			},
+			{
+				"name": "cust_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "cust_name",
+				"type": "varchar"
+			},
+			{
+				"name": "manager",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "start_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "update_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_CUST"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

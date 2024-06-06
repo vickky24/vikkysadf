@@ -1,0 +1,17 @@
+{
+	"name": "DS_ASDB_CUSTOMERSORDERS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "custorders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

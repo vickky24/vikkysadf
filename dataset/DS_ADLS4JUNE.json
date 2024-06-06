@@ -1,0 +1,45 @@
+{
+	"name": "DS_ADLS4JUNE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS4JUNE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "customer.csv",
+				"fileSystem": "customer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Cust_ID",
+				"type": "String"
+			},
+			{
+				"name": "Cust_Name",
+				"type": "String"
+			},
+			{
+				"name": " manager",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "Start_date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

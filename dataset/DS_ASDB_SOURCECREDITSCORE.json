@@ -1,0 +1,36 @@
+{
+	"name": "DS_ASDB_SOURCECREDITSCORE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASDB_KEYVAULT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Credit_Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Card_Type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Credit_Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Credit_Score",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CreditScore"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
